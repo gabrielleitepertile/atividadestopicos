@@ -15,14 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/atividades', 'AtividadeController@index');
+Route::get('/atividades/create', 'AtividadeController@create');
+Route::post('/atividades', 'AtividadeController@store');
 
-
-
-
-
-
+Route::get('/messages', 'messageController@index');
 
 //php artisan key:generate
 //composer dump-autoload
