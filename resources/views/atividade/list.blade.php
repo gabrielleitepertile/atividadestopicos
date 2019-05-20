@@ -1,5 +1,8 @@
 <h1>Lista de Atividades</h1>
 <hr>
+<p><a href="/atividades/create"><b>Cadastrar</b></a>  -  <a href="/atividades"><b>Refresh</b></a></p>
+<hr>
+
 @foreach($atividades as $a)
 	<hr>
 	<h3>{{\Carbon\Carbon::parse($a->scheduledto)->format('d/m/Y h:m')}}</h3>

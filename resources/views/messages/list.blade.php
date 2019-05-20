@@ -1,5 +1,7 @@
 <h1>Lista de Mensagens</h1>
 <hr>
+<p><a href="/messages/create"><b>Cadastrar</b></a>  -  <a href="/messages"><b>Refresh</b></a></p>
+<hr>
 
 <!--Mensagem -->
 @if ($errors->any())
