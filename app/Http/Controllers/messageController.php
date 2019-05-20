@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\messages;
 use Illuminate\Http\Request;
+use \Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use \Illuminate\Http\Response;
+
 
 class messageController extends Controller
 {
@@ -25,7 +29,7 @@ class messageController extends Controller
      */
     public function create()
     {
-        //
+        return view('messages.create');
     }
 
     /**
@@ -36,7 +40,32 @@ class messageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $mensagens = array(
+                'titulo.required' => 'É obrigatório atribuir um título para a mensagem',
+                'texto.required' => 'É obrigatória atribuir uma descrição para a mensagem',
+                'autor.required' => 'É obrigatório atribuir um autor para a mensagem',
+            );
+
+            $regras = array(
+                'titulo' => 'required|string|max:255',
+                'texto' => 'required',
+                'autor' => 'required',
+            );
+
+            $validador = Validator::make($request->all(), $regras, $mensagens);
+
+            if ($validador->fails()) {
+                return redirect('messages/create')
+                ->withErrors($validador)
+                ->withInput($request->all);
+            }
+
+            $obj_Message = new Messages();
+            $obj_Message->titulo = $request['titulo'];
+            $obj_Message->texto = $request['texto'];
+            $obj_Message->autor = $request['autor'];
+            $obj_Message->save();
+            return redirect('/messages')->with('success', 'Mensagem criada com sucesso!');
     }
 
     /**
@@ -45,9 +74,10 @@ class messageController extends Controller
      * @param  \App\messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function show(messages $messages)
+    public function show($id)
     {
-        //
+        $messages = Messages::find($id);
+        return view('messages.show',['messages' => $messages]);
     }
 
     /**
@@ -56,9 +86,10 @@ class messageController extends Controller
      * @param  \App\messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function edit(messages $messages)
+    public function edit($id)
     {
-        //
+        $obj_Message = Messages::find($id);
+        return view('messages.edit',['messages' => $obj_Message]);
     }
 
     /**
@@ -68,9 +99,34 @@ class messageController extends Controller
      * @param  \App\messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, messages $messages)
+    public function update(Request $request, $id)
     {
-        //
+            $mensagem = array(
+                'titulo.required' => 'É obrigatório atribuir um título para a mensagem',
+                'texto.required' => 'É obrigatória atribuir uma descrição para a mensagem',
+                'autor.required' => 'É obrigatório atribuir um autor para a mensagem',
+            );
+
+            $regras = array(
+                'titulo' => 'required|string|max:255',
+                'texto' => 'required',
+                'autor' => 'required',
+            );
+
+            $validador = Validator::make($request->all(), $regras, $mensagem);
+
+            if ($validador->fails()) {
+                return redirect("messages/$id/edit")
+                ->withErrors($validador)
+                ->withInput($request->all);
+            }
+
+            $obj_Message = Messages::findOrFail($id);
+            $obj_Message->titulo = $request['titulo'];
+            $obj_Message->texto = $request['texto'];
+            $obj_Message->autor = $request['autor'];
+            $obj_Message->save();
+            return redirect('/messages')->with('success', 'Mensagem editada com sucesso!!');
     }
 
     /**

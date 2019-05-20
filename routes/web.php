@@ -23,6 +23,11 @@ Route::get('/atividades/{id}/edit', 'AtividadeController@edit');
 Route::put('/atividades/{id}', 'AtividadeController@update');
 
 Route::get('/messages', 'messageController@index');
+Route::get('/messages/create', 'messageController@create');
+Route::post('/messages', 'messageController@store');
+Route::get('/messages/{id}', 'messageController@show');
+Route::get('/messages/{id}/edit', 'messageController@edit');
+Route::put('/messages/{id}', 'messageController@update');
 
 //php artisan key:generate
 //composer dump-autoload

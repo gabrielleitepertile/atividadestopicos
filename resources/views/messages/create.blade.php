@@ -1,0 +1,35 @@
+<h1>Formulário de Cadastro de Mensagens</h1>
+<hr>
+
+<!--Mensagem -->
+@if ($errors->any())
+    <div class="container">
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+@endif
+
+@if (Session::has('sucess'))
+    <div class="container">
+        <div class="alert alert-sucess">
+            {{\Session::get('sucess')}}
+        </div>
+    </div>
+@endif
+
+<form action="/messages" method="post"> 
+    {{ csrf_field() }}
+    Título:     <input type="text" name="titulo">           <br><br>
+    Texto:      <input type="text" name="texto">            <br><br>
+    Autor:      <input type="text" name="autor">            <br><br>
+    <hr>
+    <input type="submit" value="Salvar">
+</form>
+<hr>
+<p>2019 - Luiz Cassol | Tópicos Especiais | IFRS - Campus Ibirubá</p>
+
