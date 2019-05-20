@@ -1,7 +1,6 @@
 <h1>Lista de Mensagens</h1>
 <hr>
-<p><a href="/messages/create"><b>Cadastrar</b></a>  -  <a href="/messages"><b>Refresh</b></a></p>
-<hr>
+
 
 <!--Mensagem -->
 @if ($errors->any())
@@ -34,6 +33,3 @@
 	<br>
 	<hr>
 @endforeach
-
-<p>2019 - Luiz Cassol | Tópicos Especiais | IFRS - Campus Ibirubá</p>
-<!-- \Carbon\Carbon::parse($a->scheduledto)->format('d/m/Y h:m')  -->

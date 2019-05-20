@@ -31,7 +31,6 @@
     <hr>
     <input type="submit" value="Salvar">
 </form>
-<hr>
-<p>2019 - Luiz Cassol | Tópicos Especiais | IFRS - Campus Ibirubá</p>
+
 
 

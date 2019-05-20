@@ -6,6 +6,3 @@
 <h3><b>Criada em:</b> {{\Carbon\Carbon::parse($atividade->created_at)->format('d/m/Y h:m')}} </h3>
 <h3><b>Atualizada em:</b> {{\Carbon\Carbon::parse($atividade->updated_at)->format('d/m/Y h:m')}} </h3>
 <hr>
-<p><a href="/atividades/{{$atividade->id}}/edit"><b>Editar</b></a>  -  <a href="/atividades/{{$atividade->id}}/delete"><b>Excluir</b></a>  -  <a href="/atividades"><b>Voltar</b></a></p>
-<hr>
-<p>2019 - Luiz Cassol | Tópicos Especiais | IFRS - Campus Ibirubá</p>
