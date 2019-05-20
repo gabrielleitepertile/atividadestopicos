@@ -7,6 +7,6 @@
 <h3><b>Criada em:</b> {{\Carbon\Carbon::parse($messages->created_at)->format('d/m/Y h:m')}} </h3>
 <h3><b>Atualizada em:</b> {{\Carbon\Carbon::parse($messages->updated_at)->format('d/m/Y h:m')}} </h3>
 <hr>
-<p><a href="/messages/{{$messages->id}}/edit"><b>Editar</b></a>  -  <a href="/messages"><b>Voltar</b></a></p>
+<p><a href="/messages/{{$messages->id}}/edit"><b>Editar</b></a>  -  <a href="/messages/{{$messages->id}}/delete"><b>Excluir</b></a>  -  <a href="/messages"><b>Voltar</b></a></p>
 <hr>
 <p>2019 - Luiz Cassol | Tópicos Especiais | IFRS - Campus Ibirubá</p>
